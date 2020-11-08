@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html>
+   <head>
+      <script type="text/javascript" src="scripts.js"></script>
+      <script type="text/javascript" src="fkeyfix.js"></script>
+      <style>
+         @font-face {
+         font-family: 'RuneScape Chat';
+         src: url('RuneScape-Chat.woff2') format('woff2'),
+         url('RuneScape-Chat.woff') format('woff');
+         font: 1rem monospace;
+         font-display: swap;
+         }
+         #chatbox{
+         font-family: 'RuneScape Chat';
+         z-index:99;
+         position: relative;
+         top:372px;
+         left:15px;
+         white-space: pre-line;
+         font-size:16px;
+         color:#000000;
+         }
+      </style>
+   </head>
+   <body style="background:#FFFFFF; overflow:hidden; font-family:'RuneScape Chat';">
+      <div style="position:absolute; left:50%; margin-left:-383px; margin-top:0px; margin-bottom:0px; top:0px;">
+         <div id="chatbox">
+            <p>Jad Simulator OSRS/Jad Fight Practice Tool with Sounds and F-Keys!
+               Practice prayer switching against Jad in the Old School Runescape Fight Cave
+               If this helped you get your firecap follow @downthecrop on <a target="_new" href="https://twitter.com/downthecrop">Twitter</a>/<a target="_new" href="https://twitch.tv/downthecrop">Twitch</a>/<a target="_new" href="https://youtube.com/c/downthecrop">YouTube</a>
+            </p>
+         </div>
+         <div id="app" style="position:absolute; top:0px; left:0px;" onclick="klik(event)" onrightclick="return false">
+            <canvas id="maincvs" style="position:absolute; left:0px; top:0px; z-index:10;" width="765" height="503"></canvas>
+            <div id="vids">
+               <video style="position:absolute; left:4px; top:4px; display:block; z-index:1;" id="mageattack" preload="auto">
+                  <source src="jf_mage.mp4" type='video/mp4'>
+                  <source src="jf_mage.ogv" type='video/ogv'>
+                  Srsly bro, upgrade your browser
+               </video>
+               <video style="position:absolute; left:4px; top:4px; display:block; z-index:1;" id="rangeattack" preload="auto">
+                  <source src="jf_range.mp4" type='video/mp4'>
+                  <source src="jf_range.ogv" type='video/ogv'>
+                  Srsly bro, upgrade your browser
+               </video>
+            </div>
+            <div id="audio">
+               <audio id="a_mage" preload>
+                  <source src="a_mage.ogg" type="audio/ogg">
+                  <source src="a_mage.mp3" type="audio/mpeg">
+               </audio>
+               <audio id="a_range" preload>
+                  <source src="a_range.ogg" type="audio/ogg">
+                  <source src="a_range.mp3" type="audio/mpeg">
+               </audio>
+               <audio id="a_melee" preload>
+                  <source src="a_melee.ogg" type="audio/ogg">
+                  <source src="a_melee.mp3" type="audio/mpeg">
+               </audio>
+               <audio id="a_deflect" preload>
+                  <source src="a_deflect.ogg" type="audio/ogg">
+                  <source src="a_deflect.mp3" type="audio/mpeg">
+               </audio>
+               <audio id="a_potion" preload>
+                  <source src="a_potion.ogg" type="audio/ogg">
+                  <source src="a_potion.mp3" type="audio/mpeg">
+               </audio>
+            </div>
+         </div>
+         <div id="controlls" style="box-shadow: 5px 5px 20px #000000; z-index: 11;position:absolute; top: 90px; left: 110px; border: 1px solid; width:260px; height:163px;background: #FFFFFF;">
+            <div title="Select the type of prayer book.">
+               <div style="position:absolute; top:10px; left:10px"><input type="radio" name="pray" value="0"" checked> Prayers</div>
+            </div>
+            <div title="Choose the distance of the fight.">
+               <div style="position:absolute; top:30px; left:10px"><input type="radio" name="dist" value="0" onchange="mset_mode(this.value,-1)" checked> Ranged/Mage</div>
+            </div>
+            <div title="Choose the type of Jad to fight.">
+               <div style="position:absolute; top:50px; left:10px"><input type="radio" name="jad" value="0" onchange="mset_mode(-1,this.value)" checked> TzTok-Jad</div>
+            </div>
+            <div title="Select the levels of your character.">
+               <div style="position:absolute; top:70px; left:10px"><input type="radio" name="lvl" value="0" onchange="mset_level(this.value)" checked> Maxed</div>
+               <div style="position:absolute; top:70px; left:90px"><input type="radio" name="lvl" value="1" onchange="mset_level(this.value)"> Med</div>
+               <div style="position:absolute; top:70px; left:170px"><input type="radio" name="lvl" value="2" onchange="mset_level(this.value)"> Pure</div>
+            </div>
+            <div title="Select the amount of supplies in your inventory.">
+               <div style="position:absolute; top:90px; left:10px"><input type="radio" name="inv" value="0" onchange="mset_inv(this.value)" checked> Packed</div>
+               <div style="position:absolute; top:90px; left:90px"><input type="radio" name="inv" value="1" onchange="mset_inv(this.value)"> Normal</div>
+               <div style="position:absolute; top:90px; left:170px"><input type="radio" name="inv" value="2" onchange="mset_inv(this.value)"> Empty</div>
+            </div>
+            <div title="Select the connection delay in miliseconds (ping). You can find the ping of a world on the world select list ingame.">
+               <div style="position:absolute; top:110px; left:10px"><input type="radio" name="ping" value="0" onchange="mset_ping(this.value)" checked> 40ms</div>
+               <div style="position:absolute; top:110px; left:90px"><input type="radio" name="ping" value="1" onchange="mset_ping(this.value)"> 200ms</div>
+               <div style="position:absolute; top:110px; left:170px"><input type="radio" name="ping" value="2" onchange="mset_ping(this.value)"> 500ms</div>
+            </div>
+            <div id="volumeselect" title="volume" style="position:absolute; top:130px; left:10px"><input id="volrange" type="range" value=".5" min="0" max="1" step="0.03125" onchange="mset_volume(this.value);"></div>
+            <div title="Check to train without animations, using sounds only." style="position:absolute; top:130px; left:170px"><input type="checkbox" onchange="mset_blind(this.checked)"> blind</div>
+            <input style="position:absolute; width:240px; top:150px; left:10px; font-family:'RuneScape Chat'; font-size: 16px;" type="submit" value="Credit: runeapps.org start fight!" onclick="drawall(); cooldown=2;document.getElementById('controlls').style.display='none';document.getElementById('stopfight').style.display='block' ;">
+         </div>
+         <input id="stopfight" style="z-index:11; position:absolute; width:240px; top:350px; left:120px; display:none; font-family:'RuneScape Chat'; font-size: 16px;" type="submit" value="Stop Fight " onclick="drawall(); cooldown=100000; document.getElementById('controlls').style.display='block'; document.getElementById('stopfight').style.display='none' ;">
+         <script type="text/javascript">
+            startup();
+         </script>
+      </div>
+   </body>
+</html>
