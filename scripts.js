@@ -121,7 +121,6 @@ function klik(ev) {
     if (invtab == 1 && praybook == 0) {
         var xxx = Math.floor((xx - 33 - 519) / 37);
         var yyy = Math.floor((yy - 41 - 168) / 36);
-        console.log("clickpos:" +xx + yy + "floored" + xxx + " "+ yyy);
         //yyy = 3 is overheads
         if (xxx == 1 && yyy == 3) {
             fakesend("if(praypoints>0){if(prayprot==1){prayprot=0;}else{prayprot=1;} drawpray();}")
@@ -670,7 +669,6 @@ function mset_volume(a) {
     a = a * a * a
     document.getElementById("a_mage").volume = a;
     document.getElementById("a_range").volume = a;
-    document.getElementById("a_melee").volume = a;
     document.getElementById("a_deflect").volume = a;
     document.getElementById("a_potion").volume = a;
 }

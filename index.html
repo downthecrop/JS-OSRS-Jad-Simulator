@@ -1,6 +1,8 @@
 <!DOCTYPE HTML>
 <html>
    <head>
+      <title>Jad Simulator Fight Practice Tool/Sounds and F-Keys</title>
+      <link rel="icon" type="image/png" href="favicon.png">
       <script type="text/javascript" src="scripts.js"></script>
       <script type="text/javascript" src="fkeyfix.js"></script>
       <style>
@@ -11,6 +13,9 @@
          font: 1rem monospace;
          font-display: swap;
          }
+         body{
+            background-color: black;
+         }
          #chatbox{
          font-family: 'RuneScape Chat';
          z-index:99;
@@ -19,11 +24,11 @@
          left:15px;
          white-space: pre-line;
          font-size:16px;
-         color:#000000;
+         color:black;
          }
       </style>
    </head>
-   <body style="background:#FFFFFF; overflow:hidden; font-family:'RuneScape Chat';">
+   <body style="background:rgba(12, 11, 11, 0); overflow:hidden; font-family:'RuneScape Chat';">
       <div style="position:absolute; left:50%; margin-left:-383px; margin-top:0px; margin-bottom:0px; top:0px;">
          <div id="chatbox">
             <p>Jad Simulator OSRS/Jad Fight Practice Tool with Sounds and F-Keys!
@@ -36,39 +41,27 @@
             <div id="vids">
                <video style="position:absolute; left:4px; top:4px; display:block; z-index:1;" id="mageattack" preload="auto">
                   <source src="jf_mage.mp4" type='video/mp4'>
-                  <source src="jf_mage.ogv" type='video/ogv'>
-                  Srsly bro, upgrade your browser
                </video>
                <video style="position:absolute; left:4px; top:4px; display:block; z-index:1;" id="rangeattack" preload="auto">
                   <source src="jf_range.mp4" type='video/mp4'>
-                  <source src="jf_range.ogv" type='video/ogv'>
-                  Srsly bro, upgrade your browser
                </video>
             </div>
             <div id="audio">
                <audio id="a_mage" preload>
                   <source src="a_mage.ogg" type="audio/ogg">
-                  <source src="a_mage.mp3" type="audio/mpeg">
                </audio>
                <audio id="a_range" preload>
                   <source src="a_range.ogg" type="audio/ogg">
-                  <source src="a_range.mp3" type="audio/mpeg">
-               </audio>
-               <audio id="a_melee" preload>
-                  <source src="a_melee.ogg" type="audio/ogg">
-                  <source src="a_melee.mp3" type="audio/mpeg">
                </audio>
                <audio id="a_deflect" preload>
                   <source src="a_deflect.ogg" type="audio/ogg">
-                  <source src="a_deflect.mp3" type="audio/mpeg">
                </audio>
                <audio id="a_potion" preload>
                   <source src="a_potion.ogg" type="audio/ogg">
-                  <source src="a_potion.mp3" type="audio/mpeg">
                </audio>
             </div>
          </div>
-         <div id="controlls" style="box-shadow: 5px 5px 20px #000000; z-index: 11;position:absolute; top: 90px; left: 110px; border: 1px solid; width:260px; height:163px;background: #FFFFFF;">
+         <div id="controlls" style="box-shadow: 5px 5px 20px; black; z-index: 11;position:absolute; top: 90px; left: 110px; border: 1px solid; width:260px; height:163px;background: #FFFFFF;">
             <div title="Select the type of prayer book.">
                <div style="position:absolute; top:10px; left:10px"><input type="radio" name="pray" value="0"" checked> Prayers</div>
             </div>
